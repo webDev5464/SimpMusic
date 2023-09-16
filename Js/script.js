@@ -22,6 +22,8 @@ const loadPlayList = (playList_index) => {
   createAudio.load();
 
   updateMusic = setInterval(musicSliderUpdate, 1000);
+
+  createAudio.addEventListener('ended', nextMusic)
 };
 
 const playPush = () => {
@@ -108,3 +110,32 @@ const volumeSlider = () => {
 };
 
 loadPlayList(playList_index);
+
+// Ai generated Code
+
+const shuffleMusic = () => {
+  playList_index = Math.floor(Math.random() * playList.length);
+  loadPlayList(playList_index);
+  musicOn();
+};
+
+const repeatMusic = () => {
+  loadPlayList(playList_index);
+  musicOn();
+};
+
+const stopMusic = () => {
+  createAudio.pause();
+  createAudio.currentTime = 0;
+  playPause_btn.innerHTML = '<i class="fa-solid fa-play"></i>';
+};
+
+const fastForwardMusic = () => {
+  createAudio.currentTime += 10;
+};
+
+const slowDownMusic = () => {
+  createAudio.currentTime -= 10
+};
+
+// ++++++++++++++++++++

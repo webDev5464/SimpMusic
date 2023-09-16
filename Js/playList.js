@@ -12,7 +12,7 @@ const playList = [
   {
     id: "3",
     name: "Pensees Mechta",
-    path: "./audio/Pensees_Mechta.mp3",
+    path: "./audio/Coding_deep/Pensees_Mechta.mp3",
   },
   {
     id: "4",
