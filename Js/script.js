@@ -124,12 +124,6 @@ const repeatMusic = () => {
   musicOn();
 };
 
-const stopMusic = () => {
-  createAudio.pause();
-  createAudio.currentTime = 0;
-  playPause_btn.innerHTML = '<i class="fa-solid fa-play"></i>';
-};
-
 const fastForwardMusic = () => {
   createAudio.currentTime += 10;
 };

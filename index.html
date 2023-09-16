@@ -15,89 +15,92 @@
 
 <body class="bg-black select-none">
 
-  <section
-    class="border border-black w-[500px] p-5 m-auto bg-slate-900 text-white rounded-lg border border-white scale-150 translate-y-24 relative">
-    <div class="m-auto">
-      <div class="flex justify-between">
-        <h2 id="musicTitle" class="pr-4"></h2>
-        <span id="musicId"></span>
-      </div>
+  <section class="w-full p-3 bg-slate-800 text-white absolute bottom-0">
 
-      <hr class="my-2">
+    <div class="flex justify-between items-center">
 
-      <div class="m-auto relative">
-
-        <div class="flex items-center justify-between">
+      <!--! Music Information -->
+      <section class="flex items-center">
+        <div class="mt-1 mr-3 border">
+          <img src="./audioImage/all-one.jpeg" alt="" class="w-[80px]">
+        </div>
+        <div>
+          <div class="flex">
+            <h2 id="musicTitle" class="pr-4"></h2>
+            <span id="musicId"></span>
+          </div>
           <div>
+            <p>Singer Name</p>
+          </div>
+        </div>
+      </section>
+
+      <!--! Music Controller -->
+      <section>
+        <div class="flex items-center">
+          <div class="mr-2">
             <span id="currTime">0:0</span>
           </div>
           <div>
             <input type="range" class="w-80" min="1" max="100" value="0" onchange="musicSlider()" id="musicSlider">
           </div>
-          <div>
+          <div class="ml-2">
             <span id="totalDuration">0:0</span>
           </div>
         </div>
 
-        <div class="flex items-center justify-between mt-5">
-          <div class="flex items-center">
-            <div class="text-gray-600">
-              <i class="fa-solid fa-volume-low"></i>
-            </div>
-            <div class="px-2 text-gray-500 hover:text-white">
-              <input type="range" min="10" max="100" step="10" value="80" onchange="volumeSlider()" id="volume_slider">
-            </div>
-            <div class="text-gray-600">
-              <i class="fa-solid fa-volume-high"></i>
-            </div>
-          </div>
+        <div class="w-[230px] flex direction-col justify-between my-1 m-auto">
+          <button class="text-gray-500 hover:text-white mx-2" id="back" onclick="backMusic()">
+            <i class="fa-solid fa-backward-step"></i>
+          </button>
+          <button class="text-gray-500 hover:text-white mx-2" id="slowDown" onclick="slowDownMusic()">
+            <i class="fa-solid fa-backward-fast"></i>
+          </button>
+          <button class="text-gray-500 hover:text-white mx-2" id="playPause" onclick="playPush()">
+            <i class="fa-solid fa-play"></i>
+          </button>
+          <button class="text-gray-500 hover:text-white mx-2" id="fastForward" onclick="fastForwardMusic()">
+            <i class="fa-solid fa-fast-forward"></i>
+          </button>
+          <button class="text-gray-500 hover:text-white mx-2" id="next" onclick="nextMusic()">
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+        </div>
+      </section>
 
-          <div>
-            <button class="pr-2 text-gray-500 hover:text-white" id="mute_Unmute" onclick="muteUnmute()">
-              <i class="fa-solid fa-volume-high"></i>
-            </button>
-            <button class="pr-2 text-gray-500 hover:text-white" id="back" onclick="backMusic()">
-              <i class="fa-solid fa-backward-step"></i>
-            </button>
-            <button class="px-2 text-gray-500 hover:text-white" id="playPause" onclick="playPush()">
-              <i class="fa-solid fa-play"></i>
-            </button>
-            <button class="pl-2 text-gray-500 hover:text-white" id="next" onclick="nextMusic()">
-              <i class="fa-solid fa-forward-step"></i>
-            </button>
+      <!--! Audio Controller -->
+      <section class="w-fit">
+        <div class="flex items-center">
+          <div class="text-gray-600">
+            <i class="fa-solid fa-volume-low"></i>
+          </div>
+          <div class="px-2 text-gray-500 hover:text-white">
+            <input type="range" min="10" max="100" step="10" value="80" onchange="volumeSlider()" id="volume_slider">
+          </div>
+          <div class="text-gray-600">
+            <i class="fa-solid fa-volume-high"></i>
           </div>
         </div>
 
-        <!-- Ai generated Code -->
-
-        <div class="flex justify-between">
-          <div>
-            <button class="pr-2 text-gray-500 hover:text-white" id="slowDown" onclick="slowDownMusic()">
-              <i class="fa-solid fa-backward-fast"></i>
-            </button>
-            <button class="px-2 text-gray-500 hover:text-white" id="stop" onclick="stopMusic()">
-              <i class="fa-solid fa-stop"></i>
-            </button>
-            <button class="pl-2 text-gray-500 hover:text-white" id="fastForward" onclick="fastForwardMusic()">
-              <i class="fa-solid fa-fast-forward"></i>
-            </button>
-          </div>
-
-          <div>
-            <button class="pr-2 text-gray-500 hover:text-white" id="shuffle" onclick="shuffleMusic()">
-              <i class="fa-solid fa-random"></i>
-            </button>
-            <button class="pr-2 text-gray-500 hover:text-white" id="repeat" onclick="repeatMusic()">
-              <i class="fa-solid fa-repeat"></i>
-            </button>
-          </div>
+        <div class="w-[90px] flex direction-col justify-between m-auto my-1">
+          <button class="text-gray-500 hover:text-white" id="mute_Unmute" onclick="muteUnmute()">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+          <button class="text-gray-500 hover:text-white" id="shuffle" onclick="shuffleMusic()">
+            <i class="fa-solid fa-random"></i>
+          </button>
+          <button class="text-gray-500 hover:text-white" id="repeat" onclick="repeatMusic()">
+            <i class="fa-solid fa-repeat"></i>
+          </button>
         </div>
-
-        <!-- ++++++++++++++++++++++ -->
-
-      </div>
+      </section>
     </div>
+
+
+
   </section>
+
+
 
   <script src="./Js/playList.js"></script>
   <script src="./Js/script.js"></script>
