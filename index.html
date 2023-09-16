@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SimpMusic</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="./ios-music.png">
+</head>
+
+<body class="bg-black select-none">
+
+  <section
+    class="border border-black w-[500px] p-5 m-auto bg-slate-900 text-white rounded-lg border border-white scale-150 translate-y-24 relative">
+    <div class="m-auto">
+      <div class="flex justify-between">
+        <h2 id="musicTitle" class="pr-4"></h2>
+        <span id="musicId"></span>
+      </div>
+
+      <hr class="my-2">
+
+      <div class="m-auto relative">
+        <div class="flex items-center justify-between">
+          <div>
+            <span id="currTime">0:0</span>
+          </div>
+          <div>
+            <input type="range" class="w-80" min="1" max="100" value="0" onchange="musicSlider()" id="musicSlider">
+          </div>
+          <div>
+            <span id="totalDuration">0:0</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between mt-5">
+          <div class="flex items-center">
+            <div class="text-gray-600">
+              <i class="fa-solid fa-volume-low"></i>
+            </div>
+            <div class="px-2 text-gray-500 hover:text-white">
+              <input type="range" min="10" max="100" step="10" value="80" onchange="volumeSlider()" id="volume_slider">
+            </div>
+            <div class="text-gray-600">
+              <i class="fa-solid fa-volume-high"></i>
+            </div>
+          </div>
+          <div>
+            <button class="pr-2 text-gray-500 hover:text-white" id="mute_Unmute" onclick="muteUnmute()">
+              <i class="fa-solid fa-volume-high"></i>
+            </button>
+            <button class="pr-2 text-gray-500 hover:text-white" id="back" onclick="backMusic()">
+              <i class="fa-solid fa-backward-step"></i>
+            </button>
+            <button class="px-2 text-gray-500 hover:text-white" id="playPause" onclick="playPush()">
+              <i class="fa-solid fa-play"></i>
+            </button>
+            <button class="pl-2 text-gray-500 hover:text-white" id="next" onclick="nextMusic()">
+              <i class="fa-solid fa-forward-step"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="./playList.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>
