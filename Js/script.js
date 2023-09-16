@@ -2,12 +2,14 @@ let back = document.getElementById("back");
 let next = document.getElementById("next");
 let playPause_btn = document.getElementById("playPause");
 let musicTitle = document.getElementById("musicTitle");
-let musicId = document.getElementById("musicId");
+let singerName = document.getElementById("singerName")
+let audio_image = document.getElementById("audioImage")
 let music_Slider = document.getElementById("musicSlider");
 let mute_unmute = document.getElementById("mute_Unmute");
 let currTime = document.getElementById("currTime");
 let totalDuration = document.getElementById("totalDuration");
 let vol_slider = document.getElementById("volume_slider");
+let singer_name = document.getElementById("singerName");
 
 let playPushOnOff = false;
 let playList_index = 0;
@@ -18,7 +20,10 @@ let createAudio = document.createElement("audio");
 const loadPlayList = (playList_index) => {
   createAudio.src = playList[playList_index].path;
   musicTitle.textContent = playList[playList_index].name;
-  musicId.textContent = "No. " + playList[playList_index].id;
+  singerName.textContent = playList[playList_index].singer;
+  audio_image.src = playList[playList_index].audioImg
+
+
   createAudio.load();
 
   updateMusic = setInterval(musicSliderUpdate, 1000);
@@ -132,4 +137,5 @@ const slowDownMusic = () => {
   createAudio.currentTime -= 10
 };
 
-// ++++++++++++++++++++
+
+
