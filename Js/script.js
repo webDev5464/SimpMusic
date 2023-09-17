@@ -10,6 +10,8 @@ let currTime = document.getElementById("currTime");
 let totalDuration = document.getElementById("totalDuration");
 let vol_slider = document.getElementById("volume_slider");
 let singer_name = document.getElementById("singerName");
+let toggle_theme = document.getElementById("toggle-theme")
+let theme_style_btn = document.getElementById("theme-style")
 
 let playPushOnOff = false;
 let playList_index = 0;
@@ -137,5 +139,29 @@ const slowDownMusic = () => {
   createAudio.currentTime -= 10
 };
 
+// Theme Change
 
+const toggleTheme = () => {
+  if (toggle_theme.getAttribute("href") === "./style/darkTheme.css") {
+    toggle_theme.setAttribute("href", "./style/lightTheme.css")
+    localStorage.setItem("theme", "dark")
+    theme_style_btn.innerHTML = '<i class="fa-solid fa-moon"></i>'
+    console.log("dark");
+  } else {
+    toggle_theme.setAttribute("href", "./style/darkTheme.css")
+    localStorage.setItem("theme", "light")
+    theme_style_btn.innerHTML = '<i class="fa-solid fa-sun"></i>'
+    console.log("light");
+  }
+}
 
+const storeTheme = localStorage.getItem("theme")
+if (storeTheme === "dark") {
+  toggle_theme.setAttribute("href", "./style/lightTheme.css")
+  theme_style_btn.innerHTML = '<i class="fa-solid fa-moon"></i>'
+} else {
+  toggle_theme.setAttribute("href", "./style/darkTheme.css")
+  theme_style_btn.innerHTML = '<i class="fa-solid fa-sun"></i>'
+}
+
+theme_style_btn.addEventListener("click", toggleTheme)

@@ -1,0 +1,40 @@
+body {
+    background-color: var(--bodyBgLight);
+    color: var(--textLight);
+}
+
+aside {
+    background-color: var(--themeLight);
+}
+
+footer {
+    background-color: var(--penalLight);
+}
+
+aside>section>div:nth-child(2),
+aside>section>div:nth-child(3),
+aside>section>div:nth-child(4),
+footer>div>section:nth-child(2)>div:nth-child(1)>button,
+footer>div>section:nth-child(3)>div:nth-child(2)>button,
+#singerName {
+    color: var(--iconLight);
+}
+
+aside>section>div:nth-child(2):hover,
+aside>section>div:nth-child(3):hover,
+aside>section>div:nth-child(4):hover,
+footer>div>section:nth-child(2)>div:first-child>button:hover,
+footer>div>section:nth-child(3)>div:nth-child(2)>button:hover {
+    color: var(--textLight);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #ffffff;
+    background: rgb(255, 255, 255);
+    border-radius: 6px;
+    border: 0px solid #000000;
+}
