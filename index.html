@@ -21,7 +21,7 @@
           "midTab": {
             'max': '670px'
           },
-          "mobL": {
+          "mobM": {
             'max': '470px'
           },
           "mobS": {
@@ -35,7 +35,7 @@
 
 <body class="bg-black select-none">
 
-  <footer class="w-full p-3 tab:p-1 mobL:px-3 bg-slate-800 text-white absolute bottom-0">
+  <footer class="w-full p-3 tab:p-1 mobM:px-5 bg-slate-800 text-white absolute bottom-0">
 
     <div class="flex justify-between items-center">
 
@@ -90,7 +90,7 @@
 
       <!--! Audio Controller -->
       <section class="w-fit">
-        <div class="flex items-center mobL:hidden">
+        <div class="flex items-center mobM:hidden">
           <div class="text-gray-600">
             <i class="fa-solid fa-volume-low"></i>
           </div>
@@ -102,14 +102,14 @@
           </div>
         </div>
 
-        <div class="w-[90px] mobL:w-fit flex mobL:flex-col justify-between m-auto my-1">
-          <button class="text-gray-500 hover:text-white mobL:py-1" id="mute_Unmute" onclick="muteUnmute()">
+        <div class="w-[90px] mobM:w-fit flex mobM:flex-col justify-between m-auto my-1">
+          <button class="text-gray-500 hover:text-white mobM:py-1" id="mute_Unmute" onclick="muteUnmute()">
             <i class="fa-solid fa-volume-high"></i>
           </button>
-          <button class="text-gray-500 hover:text-white mobL:py-1" id="shuffle" onclick="shuffleMusic()">
+          <button class="text-gray-500 hover:text-white mobM:py-1" id="shuffle" onclick="shuffleMusic()">
             <i class="fa-solid fa-random"></i>
           </button>
-          <button class="text-gray-500 hover:text-white mobL:py-1" id="repeat" onclick="repeatMusic()">
+          <button class="text-gray-500 hover:text-white mobM:py-1" id="repeat" onclick="repeatMusic()">
             <i class="fa-solid fa-repeat"></i>
           </button>
         </div>
