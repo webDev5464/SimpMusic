@@ -30,31 +30,40 @@
       }
     }
   </script>
-  <!-- <script id="toggle-theme" src="./config/dark/tailwind.config.js"></script> -->
   <link rel="stylesheet" href="./style/globle.css">
   <link id="toggle-theme" rel="stylesheet" href="./style/darkTheme.css">
 </head>
 
 <body class="select-none">
 
-  <aside class="w-[70px] m-1 rounded-2xl">
-    <section class="flex flex-col items-center">
-      <div class="my-2">
-        <img src="./ico/ios-music.png" alt="" class="w-[50px]">
-      </div>
-      <div class="text-3xl mb-2 px-3 py-2 cursor-pointer rounded-lg">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
-      <div class="text-3xl mb-2 px-3 py-2 cursor-pointer rounded-lg" id="theme-style">
-        <i class="fa-solid fa-sun"></i>
-      </div>
-      <div class="text-3xl mb-2 px-3 py-2 cursor-pointer rounded-lg">
-        <i class="fa-solid fa-compact-disc"></i>
+  <main class="flex">
+    <aside class="w-[70px] m-1 rounded-2xl h-fit fixed">
+      <section class="flex flex-col items-center">
+        <div class="my-2">
+          <img src="./ico/ios-music.png" alt="" class="w-[50px]">
+        </div>
+        <div class="text-3xl mb-2 px-3 py-2 cursor-pointer rounded-lg">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="text-3xl mb-2 px-3 py-2 cursor-pointer rounded-lg" id="theme-style">
+          <i class="fa-solid fa-sun"></i>
+        </div>
+        <div class="text-3xl mb-2 px-3 py-2 cursor-pointer rounded-lg">
+          <i class="fa-solid fa-compact-disc"></i>
+        </div>
+      </section>
+    </aside>
+
+    <section class="w-full ml-20">
+      <header class="bg-red-900 h-[50px] w-screen fixed top-0"></header>
+
+      <div class="overflow-auto mt-14 mb-[90px] pr-1">
+        <section id="allMusic"></section>
       </div>
     </section>
-  </aside>
+  </main>
 
-  <footer class="w-full p-3 tab:p-1 mobM:px-5 absolute bottom-0">
+  <footer class="w-full p-3 tab:p-1 mobM:px-5 fixed bottom-0">
 
     <div class="flex justify-between items-center">
 

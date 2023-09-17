@@ -12,6 +12,7 @@ let vol_slider = document.getElementById("volume_slider");
 let singer_name = document.getElementById("singerName");
 let toggle_theme = document.getElementById("toggle-theme")
 let theme_style_btn = document.getElementById("theme-style")
+let all_music = document.getElementById("allMusic")
 
 let playPushOnOff = false;
 let playList_index = 0;
@@ -165,3 +166,25 @@ if (storeTheme === "dark") {
 }
 
 theme_style_btn.addEventListener("click", toggleTheme)
+
+// Render all music
+
+const renderMusic = () => {
+  const musicList = playList.map((e) => {
+    return `
+      <section class="my-3 flex items-center p-2 rounded-full">
+        <div>
+          <img src="${e.audioImg}" class="w-[40px] rounded-full" />
+        </div>
+        <div>
+          <p>${e.name}</p>
+        </div>
+      </section>
+    `
+  })
+
+  let musicListRender = musicList.join('')
+  all_music.innerHTML = musicListRender
+}
+
+renderMusic()

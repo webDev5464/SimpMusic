@@ -3,7 +3,8 @@ body {
     color: var(--textLight);
 }
 
-aside {
+aside,
+#allMusic>section {
     background-color: var(--themeLight);
 }
 

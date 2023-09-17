@@ -18,69 +18,69 @@ const playList = [
     name: "Pensees Mechta",
     path: "./audio/Coding_deep/Pensees_Mechta.mp3",
     singer: "Pensees",
-    audioImg: "../audioImage/Pensees_Mechta.jpeg"
+    audioImg: "../audioImage/all-one.jpeg"
   },
   {
     id: "4",
     name: "focus_track1",
     path: "./audio/Focus/focus_track1.mp3",
-    singer: "",
-    audioImg: ""
+    singer: "Unknown",
+    audioImg: "../audioImage/all-two.jpeg"
   },
   {
     id: "5",
     name: "focus_track2",
     path: "./audio/Focus/focus_track2.mp3",
-    singer: "",
-    audioImg: ""
+    singer: "Unknown",
+    audioImg: "../audioImage/all-three.jpeg"
   },
   {
     id: "6",
     name: "focus_track3",
     path: "./audio/Focus/focus_track3.mp3",
-    singer: "",
-    audioImg: ""
+    singer: "Unknown",
+    audioImg: "../audioImage/all-one.jpeg"
   },
   {
     id: "7",
     name: "moderate_track1",
     path: "./audio/Moderate/moderate_track1.mp3",
-    singer: "",
-    audioImg: ""
+    singer: "Unknown",
+    audioImg: "../audioImage/all-two.jpeg"
   },
   {
     id: "8",
     name: "moderate_track2",
     path: "./audio/Moderate/moderate_track2.mp3",
-    singer: "",
-    audioImg: ""
+    singer: "Unknown",
+    audioImg: "../audioImage/all-three.jpeg"
   },
   {
     id: "9",
     name: "moderate_track2",
     path: "./audio/Moderate/moderate_track3.mp3",
-    singer: "",
-    audioImg: ""
+    singer: "Unknown",
+    audioImg: "../audioImage/all-one.jpeg"
   },
   {
     id: "10",
     name: "relax_track1",
     path: "./audio/Relax/relax_track1.mp3",
-    singer: "",
-    audioImg: ""
+    singer: "Unknown",
+    audioImg: "../audioImage/all-two.jpeg"
   },
   {
     id: "11",
     name: "relax_track2",
     path: "./audio/Relax/relax_track2.mp3",
-    singer: "",
-    audioImg: ""
+    singer: "Unknown",
+    audioImg: "../audioImage/all-three.jpeg"
   },
   {
     id: "12",
     name: "relax_track3",
     path: "./audio/Relax/relax_track3.mp3",
-    singer: "",
-    audioImg: ""
+    singer: "Unknown",
+    audioImg: "../audioImage/all-one.jpeg"
   }
 ];
