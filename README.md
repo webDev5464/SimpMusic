@@ -48,7 +48,53 @@ const playList = [
 
 **`script.js`**
 
+**Music Play & pause method**
+
 ```js
 // get button id
 let playPauseBtn = document.getElementById("playPause");
+
+// create new audio element
+let loadedMusic = document.createElement("audio")
+// as argument
+let musicCondition = false
+// music index
+let musicIndex = 0
+
+const musicHandler = (i) => {
+    // in (loadedMusic) variable add src from (playlist) array-abject path.
+    loadedMusic.src = playList[i].path;
+    // end music load here
+    loadedMusic.load()
+}
+
+// declare function
+musicHandler(musicIndex)
+
+// Music Play function 
+const playMusic = () => {    
+    // argument true
+    musicCondition = true
+    loadedMusic.play()
+    // Change btn name
+    playPauseBtn.innerHTML = 'Pause'
+}
+
+const pauseMusic = () => {
+    // argument false
+    musicCondition = false;
+    loadedMusic.pause();
+    // Change btn name
+    playPauseBtn.innerHTML = 'Play';
+}
+
+// Play Pause button
+const playPauseController =  () => {
+    if (!musicCondition) {
+        playMusic();
+    } else {
+        pauseMusic();
+    }
+}
+
 ```
