@@ -7,9 +7,7 @@
 ****
 ****
 
-## 📌 Create First Music Array Object
-
-- Create new directory end download selected music's.
+## 🔺 Loaded Music
 
 **`script.js`**
 
@@ -37,20 +35,7 @@ const playList = [
         audioImg: "../audioImage/all-one.jpeg"
     },
 ];
-```
 
-**`index.html`**
-
-```html
-<!-- Create Play-Pause button -->
-<button id="playPause" onclick="playPauseController()">Play</button>
-```
-
-**`script.js`**
-
-**Music Play & pause method**
-
-```js
 // get button id
 let playPauseBtn = document.getElementById("playPause");
 
@@ -62,6 +47,7 @@ let musicCondition = false
 let musicIndex = 0
 
 const musicHandler = (i) => {
+    // console.log((LoadedMusic.src = testPlayList[i].path));
     // in (loadedMusic) variable add src from (playlist) array-abject path.
     loadedMusic.src = playList[i].path;
     // end music load here
@@ -70,14 +56,29 @@ const musicHandler = (i) => {
 
 // declare function
 musicHandler(musicIndex)
+```
 
+## 🔺 Play Pause Method
+
+**`index.html`**
+
+```html
+<!-- Play Pause btn -->
+<button id="playPause" onclick="playPauseController()">
+    <i class="fa-solid fa-play"></i>
+</button>   
+```
+
+**`script.js`**
+
+```js
 // Music Play function 
 const playMusic = () => {    
     // argument true
     musicCondition = true
     loadedMusic.play()
     // Change btn name
-    playPauseBtn.innerHTML = 'Pause'
+    playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
 }
 
 const pauseMusic = () => {
@@ -85,7 +86,7 @@ const pauseMusic = () => {
     musicCondition = false;
     loadedMusic.pause();
     // Change btn name
-    playPauseBtn.innerHTML = 'Play';
+    playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
 }
 
 // Play Pause button
@@ -95,6 +96,48 @@ const playPauseController =  () => {
     } else {
         pauseMusic();
     }
-}
 
+    // Ternary operator
+    // !musicCondition ? playMusic() : pauseMusic();
+}
+```
+
+## 🔺 Backward & Forward Method
+
+**`index.html`**
+
+```html
+<button id="backward" onclick="backwardBtn()">
+    <i class="fa-solid fa-backward-step"></i>
+</button>
+
+<button id="forward" onclick="forwardBtn()">
+    <i class="fa-solid fa-forward-step"></i>
+</button>
+```
+
+**`script.js`**
+
+```js
+const forwardBtn = () => {
+  if (MusicIndex < testPlayList.length - 1) {
+    MusicIndex += 1;
+  } else {
+    MusicIndex = 0;
+  }
+
+  musicHandler(MusicIndex);
+  playMusic();
+};
+
+const backwardBtn = () => {
+  if (MusicIndex > 0) {
+    MusicIndex -= 1;
+  } else {
+    MusicIndex = testPlayList.length - 1;
+  }
+
+  musicHandler(MusicIndex);
+  playMusic();
+};
 ```
