@@ -39,3 +39,8 @@ input[type="range"]::-webkit-slider-runnable-track {
     border-radius: 6px;
     border: 0px solid #000000;
 }
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: var(--bodyBgLight);
+}

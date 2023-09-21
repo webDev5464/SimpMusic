@@ -2,17 +2,17 @@ let back = document.getElementById("back");
 let next = document.getElementById("next");
 let playPause_btn = document.getElementById("playPause");
 let musicTitle = document.getElementById("musicTitle");
-let singerName = document.getElementById("singerName")
-let audio_image = document.getElementById("audioImage")
+let singerName = document.getElementById("singerName");
+let audio_image = document.getElementById("audioImage");
 let music_Slider = document.getElementById("musicSlider");
 let mute_unmute = document.getElementById("mute_Unmute");
 let currTime = document.getElementById("currTime");
 let totalDuration = document.getElementById("totalDuration");
 let vol_slider = document.getElementById("volume_slider");
 let singer_name = document.getElementById("singerName");
-let toggle_theme = document.getElementById("toggle-theme")
-let theme_style_btn = document.getElementById("theme-style")
-let all_music = document.getElementById("allMusic")
+let toggle_theme = document.getElementById("toggle-theme");
+let theme_style_btn = document.getElementById("theme-style");
+let all_music = document.getElementById("allMusic");
 
 let playPushOnOff = false;
 let playList_index = 0;
@@ -24,14 +24,13 @@ const loadPlayList = (playList_index) => {
   createAudio.src = playList[playList_index].path;
   musicTitle.textContent = playList[playList_index].name;
   singerName.textContent = playList[playList_index].singer;
-  audio_image.src = playList[playList_index].audioImg
-
+  audio_image.src = playList[playList_index].audioImg;
 
   createAudio.load();
 
   updateMusic = setInterval(musicSliderUpdate, 1000);
 
-  createAudio.addEventListener('ended', nextMusic)
+  createAudio.addEventListener("ended", nextMusic);
 };
 
 const playPush = () => {
@@ -137,35 +136,35 @@ const fastForwardMusic = () => {
 };
 
 const slowDownMusic = () => {
-  createAudio.currentTime -= 10
+  createAudio.currentTime -= 10;
 };
 
 // Theme Change
 
 const toggleTheme = () => {
   if (toggle_theme.getAttribute("href") === "./style/darkTheme.css") {
-    toggle_theme.setAttribute("href", "./style/lightTheme.css")
-    localStorage.setItem("theme", "dark")
-    theme_style_btn.innerHTML = '<i class="fa-solid fa-moon"></i>'
+    toggle_theme.setAttribute("href", "./style/lightTheme.css");
+    localStorage.setItem("theme", "dark");
+    theme_style_btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
     console.log("dark");
   } else {
-    toggle_theme.setAttribute("href", "./style/darkTheme.css")
-    localStorage.setItem("theme", "light")
-    theme_style_btn.innerHTML = '<i class="fa-solid fa-sun"></i>'
+    toggle_theme.setAttribute("href", "./style/darkTheme.css");
+    localStorage.setItem("theme", "light");
+    theme_style_btn.innerHTML = '<i class="fa-solid fa-sun"></i>';
     console.log("light");
   }
-}
+};
 
-const storeTheme = localStorage.getItem("theme")
+const storeTheme = localStorage.getItem("theme");
 if (storeTheme === "dark") {
-  toggle_theme.setAttribute("href", "./style/lightTheme.css")
-  theme_style_btn.innerHTML = '<i class="fa-solid fa-moon"></i>'
+  toggle_theme.setAttribute("href", "./style/lightTheme.css");
+  theme_style_btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
 } else {
-  toggle_theme.setAttribute("href", "./style/darkTheme.css")
-  theme_style_btn.innerHTML = '<i class="fa-solid fa-sun"></i>'
+  toggle_theme.setAttribute("href", "./style/darkTheme.css");
+  theme_style_btn.innerHTML = '<i class="fa-solid fa-sun"></i>';
 }
 
-theme_style_btn.addEventListener("click", toggleTheme)
+theme_style_btn.addEventListener("click", toggleTheme);
 
 // Render all music
 
@@ -180,11 +179,11 @@ const renderMusic = () => {
           <p>${e.name}</p>
         </div>
       </section>
-    `
-  })
+    `;
+  });
 
-  let musicListRender = musicList.join('')
-  all_music.innerHTML = musicListRender
-}
+  let musicListRender = musicList.join("");
+  all_music.innerHTML = musicListRender;
+};
 
-renderMusic()
+renderMusic();

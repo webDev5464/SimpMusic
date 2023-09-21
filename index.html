@@ -34,32 +34,49 @@
   <link id="toggle-theme" rel="stylesheet" href="./style/darkTheme.css">
 </head>
 
-<body class="select-none">
-
+<body class="select-none h-screen overflow-hidden">
   <main class="flex">
+    <!--! Aside Music Settings -->
     <aside class="w-[70px] m-1 rounded-2xl h-fit fixed">
       <section class="flex flex-col items-center">
+        <!--! Logo -->
         <div class="my-2">
           <img src="./ico/ios-music.png" alt="" class="w-[50px]">
         </div>
-        <div class="text-3xl mb-2 px-3 py-2 cursor-pointer rounded-lg">
+        <!--! Search Icon -->
+        <div class="text-3xl mb-2 px-3 py-2 cursor-pointer rounded-lg active:scale-90">
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-        <div class="text-3xl mb-2 px-3 py-2 cursor-pointer rounded-lg" id="theme-style">
+        <!--! Toggle Theme Icon -->
+        <div class="text-3xl mb-2 px-3 py-2 cursor-pointer rounded-lg active:scale-90" id="theme-style">
           <i class="fa-solid fa-sun"></i>
         </div>
-        <div class="text-3xl mb-2 px-3 py-2 cursor-pointer rounded-lg">
+        <!--! Music Information -->
+        <!--* default none - tab block -->
+        <div
+          class="text-3xl mb-2 px-3 py-2 cursor-pointer rounded-lg active:scale-90 hover:rotate-180 duration-500 hidden tab:block">
           <i class="fa-solid fa-compact-disc"></i>
         </div>
       </section>
     </aside>
 
+    <!--! tab music Information  -->
+    <section class="bg-blue-900 w-[500px] hidden tab:block absolute h-[340px] left-0 top-[300px]">
+
+    </section>
+
+    <!--! All Music Render -->
     <section class="w-full ml-20">
+
+      <!--! Header -->
       <header class="bg-red-900 h-[50px] w-screen fixed top-0"></header>
 
-      <div class="overflow-auto mt-14 mb-[90px] pr-1">
-        <section id="allMusic"></section>
-      </div>
+      <!--! Hare is render all music's -->
+      <main class="">
+        <div class="pr-1 w-full overflow-auto h-[620px] mt-[55px] mb-[110px]">
+          <section id="allMusic" class=""></section>
+        </div>
+      </main>
     </section>
   </main>
 

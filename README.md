@@ -36,9 +36,7 @@ const playList = [
     },
 ];
 
-// get button id
-let playPauseBtn = document.getElementById("playPause");
-
+/* Globally use variables */
 // create new audio element
 let loadedMusic = document.createElement("audio")
 // as argument
@@ -58,6 +56,33 @@ const musicHandler = (i) => {
 musicHandler(musicIndex)
 ```
 
+## 🔺 Set music title
+
+**`index.html`**
+
+```html
+<!-- Music title is here -->
+<p id="musicTitle"></p>
+```
+
+**`script.js`**
+
+```js
+let musicTitle = document.getElementById("musicTitle");
+```
+
+```js
+const musicHandler = (i) => {
+  LoadedMusic.src = playList[i].path;
+
+  /* */
+  musicTitle.innerHTML = playList[i].name;
+  /* */
+  
+  LoadedMusic.load();
+};
+```
+
 ## 🔺 Play Pause Method
 
 **`index.html`**
@@ -70,6 +95,11 @@ musicHandler(musicIndex)
 ```
 
 **`script.js`**
+
+```js
+// get button id
+let playPauseBtn = document.getElementById("playPause");
+```
 
 ```js
 // Music Play function 
@@ -107,11 +137,11 @@ const playPauseController =  () => {
 **`index.html`**
 
 ```html
-<button id="backward" onclick="backwardBtn()">
+<button onclick="backwardBtn()">
     <i class="fa-solid fa-backward-step"></i>
 </button>
 
-<button id="forward" onclick="forwardBtn()">
+<button onclick="forwardBtn()">
     <i class="fa-solid fa-forward-step"></i>
 </button>
 ```
@@ -139,5 +169,41 @@ const backwardBtn = () => {
 
   musicHandler(MusicIndex);
   playMusic();
+};
+```
+
+## 🔺 Mute Unmute Method
+
+**`index.html`**
+
+```html
+<button id="muteUnmute" onclick="muteUnmuteBtn()">
+    <i class="fa-solid fa-volume-high"></i>
+</button>
+```
+
+**`script.js`**
+
+```js
+let muteUnmute = document.getElementById("muteUnmute");
+```
+
+```js
+const muteUnmuteBtn = () => {
+  if (LoadedMusic.muted === true) {
+    LoadedMusic.muted = false;
+    muteUnmute.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+  } else {
+    LoadedMusic.muted = true;
+    muteUnmute.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+  }
+};
+
+const mute = () => {
+  LoadedMusic.volume = LoadedMusic.value / 0;
+};
+
+const unMute = () => {
+  LoadedMusic.volume = LoadedMusic.value / 100;
 };
 ```
