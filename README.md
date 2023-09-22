@@ -71,6 +71,8 @@ musicHandler(musicIndex);
 let musicTitle = document.getElementById("musicTitle");
 ```
 
+:- ***Add Condition inside `musicHandler`***
+
 ```js
 function musicHandler(i) {
   LoadedMusic.src = playList[i].path;
@@ -131,6 +133,10 @@ function playPauseController() {
     // !musicCondition ? playMusic() : pauseMusic();
 };
 ```
+
+## 🔺 Auto Change Music Method
+
+
 
 ## 🔺 Backward & Forward Method
 
@@ -206,6 +212,26 @@ function mute() {
 function unMute() {
   LoadedMusic.volume = LoadedMusic.value / 100;
 };
+```
+
+## 🔺 Volume Low Heigh input Method
+
+**`index.html`**
+
+```html
+<input type="range" min="10" max="100" value="80" step="15" id="volumeController" onchange="volumeControllerSlider()">
+```
+
+**`script.js`**
+
+```js
+let volumeController = document.getElementById("volumeController");
+```
+
+```js
+function volumeControllerSlider() {
+  LoadedMusic.volume = volumeController.value / 100;
+}
 ```
 
 ## 🔺 Audio Range Update End Timing Update.
