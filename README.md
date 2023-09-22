@@ -1,4 +1,4 @@
-# SimpMusic
+# 📓 Music Site
 
 ![logo](ico/ios-music.png)
 
@@ -44,10 +44,9 @@ let musicCondition = false;
 // music index
 let musicIndex = 0;
 
-function musicHandler(i) {
-    // console.log((LoadedMusic.src = testPlayList[i].path));
-    // in (loadedMusic) variable add src from (playlist) array-abject path.
+function musicHandler(i) {    
     loadedMusic.src = playList[i].path;
+
     // end music load here
     loadedMusic.load()
 };
@@ -134,10 +133,6 @@ function playPauseController() {
 };
 ```
 
-## 🔺 Auto Change Music Method
-
-
-
 ## 🔺 Backward & Forward Method
 
 **`index.html`**
@@ -176,6 +171,22 @@ function backwardBtn() {
   musicHandler(MusicIndex);
   playMusic();
 };
+```
+
+## 🔺 Auto Change Music Method
+
+```js
+function musicHandler(i) {
+  // console.log((LoadedMusic.src = playList[i].path));
+  LoadedMusic.src = playList[i].path;
+  musicTitle.textContent = playList[i].name;
+
+  LoadedMusic.load();
+
+  /* */
+  LoadedMusic.addEventListener("ended", forwardBtn);  
+  /* */
+}
 ```
 
 ## 🔺 Mute Unmute Method
@@ -239,9 +250,9 @@ function volumeControllerSlider() {
 **`index.html`**
 
 ```html
-<p id="updateTime">00:00</p>
+<p id="updateTime"></p>
 <input type="range" id="musicSlider" onchange="musicSliderRange()">
-<p id="defaultTime">00:00</p>
+<p id="defaultTime"></p>
 ```
 
 **`script.js`**
@@ -284,6 +295,7 @@ function musicHandler() {
   musicTitle.textContent = playList[i].name;
 
   LoadedMusic.load();
+  LoadedMusic.addEventListener("ended", forwardBtn);
   
   /* */
   slider = setInterval(MusicCountdown, 1000);
