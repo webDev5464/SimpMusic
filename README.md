@@ -38,22 +38,22 @@ const playList = [
 
 /* Globally use variables */
 // create new audio element
-let loadedMusic = document.createElement("audio")
+let loadedMusic = document.createElement("audio");
 // as argument
-let musicCondition = false
+let musicCondition = false;
 // music index
-let musicIndex = 0
+let musicIndex = 0;
 
-const musicHandler = (i) => {
+function musicHandler(i) {
     // console.log((LoadedMusic.src = testPlayList[i].path));
     // in (loadedMusic) variable add src from (playlist) array-abject path.
     loadedMusic.src = playList[i].path;
     // end music load here
     loadedMusic.load()
-}
+};
 
 // declare function
-musicHandler(musicIndex)
+musicHandler(musicIndex);
 ```
 
 ## 🔺 Set music title
@@ -72,7 +72,7 @@ let musicTitle = document.getElementById("musicTitle");
 ```
 
 ```js
-const musicHandler = (i) => {
+function musicHandler(i) {
   LoadedMusic.src = playList[i].path;
 
   /* */
@@ -103,33 +103,33 @@ let playPauseBtn = document.getElementById("playPause");
 
 ```js
 // Music Play function 
-const playMusic = () => {    
+function playMusic() {    
     // argument true
-    musicCondition = true
-    loadedMusic.play()
+    musicCondition = true;
+    loadedMusic.play();
     // Change btn name
-    playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
-}
+    playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+};
 
-const pauseMusic = () => {
+function pauseMusic() {
     // argument false
     musicCondition = false;
     loadedMusic.pause();
     // Change btn name
     playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-}
+};
 
 // Play Pause button
-const playPauseController =  () => {
+function playPauseController() {
     if (!musicCondition) {
         playMusic();
     } else {
         pauseMusic();
-    }
+    };
 
     // Ternary operator
     // !musicCondition ? playMusic() : pauseMusic();
-}
+};
 ```
 
 ## 🔺 Backward & Forward Method
@@ -149,23 +149,23 @@ const playPauseController =  () => {
 **`script.js`**
 
 ```js
-const forwardBtn = () => {
+function forwardBtn() {
   if (MusicIndex < playList.length - 1) {
     MusicIndex += 1;
   } else {
     MusicIndex = 0;
-  }
+  };
 
   musicHandler(MusicIndex);
   playMusic();
 };
 
-const backwardBtn = () => {
+function backwardBtn() {
   if (MusicIndex > 0) {
     MusicIndex -= 1;
   } else {
     MusicIndex = testPlayList.length - 1;
-  }
+  };
 
   musicHandler(MusicIndex);
   playMusic();
@@ -189,21 +189,21 @@ let muteUnmute = document.getElementById("muteUnmute");
 ```
 
 ```js
-const muteUnmuteBtn = () => {
+function muteUnmuteBtn() {
   if (LoadedMusic.muted === true) {
     LoadedMusic.muted = false;
     muteUnmute.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
   } else {
     LoadedMusic.muted = true;
     muteUnmute.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-  }
+  };
 };
 
-const mute = () => {
+function mute() {
   LoadedMusic.volume = LoadedMusic.value / 0;
 };
 
-const unMute = () => {
+function unMute() {
   LoadedMusic.volume = LoadedMusic.value / 100;
 };
 ```
@@ -225,7 +225,7 @@ let musicSlider = document.getElementById("musicSlider");
 ```
 
 ```js
-const musicSliderRange = () => {
+function musicSliderRange() {
   let seekTo = LoadedMusic.duration * (musicSlider.value / 100);
   LoadedMusic.currentTime = seekTo;
 };
@@ -245,14 +245,14 @@ function MusicCountdown() {
 
     defaultTime.innerHTML = musicMin + ":" + musicSec;
     updateTime.innerHTML = updatedMin + ":" + updatedSec;
-  }
-}
+  };
+};
 ```
 
 :- ***Add Condition inside `musicHandler`***
 
 ```js
-const musicHandler = (i) => {
+function musicHandler() {
   // console.log((LoadedMusic.src = playList[i].path));
   LoadedMusic.src = playList[i].path;
   musicTitle.textContent = playList[i].name;
