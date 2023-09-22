@@ -150,7 +150,7 @@ const playPauseController =  () => {
 
 ```js
 const forwardBtn = () => {
-  if (MusicIndex < testPlayList.length - 1) {
+  if (MusicIndex < playList.length - 1) {
     MusicIndex += 1;
   } else {
     MusicIndex = 0;
@@ -205,5 +205,62 @@ const mute = () => {
 
 const unMute = () => {
   LoadedMusic.volume = LoadedMusic.value / 100;
+};
+```
+
+## 🔺 Audio Range Update End Timing Update.
+
+**`index.html`**
+
+```html
+<p id="updateTime">00:00</p>
+<input type="range" id="musicSlider" onchange="musicSliderRange()">
+<p id="defaultTime">00:00</p>
+```
+
+**`script.js`**
+
+```js
+let musicSlider = document.getElementById("musicSlider");
+```
+
+```js
+const musicSliderRange = () => {
+  let seekTo = LoadedMusic.duration * (musicSlider.value / 100);
+  LoadedMusic.currentTime = seekTo;
+};
+
+function MusicCountdown() {
+  let sliderPosition = 0;
+
+  if (!isNaN(LoadedMusic.duration)) {
+    sliderPosition = LoadedMusic.currentTime * (100 / LoadedMusic.duration);
+    musicSlider.value = sliderPosition;
+
+    let musicMin = Math.floor(LoadedMusic.currentTime / 60);
+    let musicSec = Math.floor(LoadedMusic.currentTime - musicMin * 60);
+
+    let updatedMin = Math.floor(LoadedMusic.duration / 60);
+    let updatedSec = Math.floor(LoadedMusic.duration - updatedMin * 60);
+
+    defaultTime.innerHTML = musicMin + ":" + musicSec;
+    updateTime.innerHTML = updatedMin + ":" + updatedSec;
+  }
+}
+```
+
+:- ***Add Condition inside `musicHandler`***
+
+```js
+const musicHandler = (i) => {
+  // console.log((LoadedMusic.src = playList[i].path));
+  LoadedMusic.src = playList[i].path;
+  musicTitle.textContent = playList[i].name;
+
+  LoadedMusic.load();
+  
+  /* */
+  slider = setInterval(MusicCountdown, 1000);
+  /* */
 };
 ```
