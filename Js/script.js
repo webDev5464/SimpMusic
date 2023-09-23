@@ -1,3 +1,4 @@
+//! Get Id's 
 let back = document.getElementById("back");
 let next = document.getElementById("next");
 let playPause_btn = document.getElementById("playPause");
@@ -14,10 +15,10 @@ let toggle_theme = document.getElementById("toggle-theme");
 let theme_style_btn = document.getElementById("theme-style");
 let all_music = document.getElementById("allMusic");
 
+//! Global Variable 
 let playPushOnOff = false;
 let playList_index = 0;
 let updateMusic;
-
 let createAudio = document.createElement("audio");
 
 const loadPlayList = (playList_index) => {
@@ -33,23 +34,23 @@ const loadPlayList = (playList_index) => {
   createAudio.addEventListener("ended", nextMusic);
 };
 
-const playPush = () => {
+function playPush() {
   !playPushOnOff ? musicOn() : musicOff();
 };
 
-const musicOn = () => {
+function musicOn() {
   playPushOnOff = true;
   createAudio.play();
   playPause_btn.innerHTML = '<i class="fa-solid fa-pause"></i>';
 };
 
-const musicOff = () => {
+function musicOff() {
   playPushOnOff = false;
   createAudio.pause();
   playPause_btn.innerHTML = '<i class="fa-solid fa-play"></i>';
 };
 
-const nextMusic = () => {
+function nextMusic() {
   if (playList_index < playList.length - 1) {
     playList_index += 1;
   } else {
@@ -60,7 +61,7 @@ const nextMusic = () => {
   musicOn();
 };
 
-const backMusic = () => {
+function backMusic() {
   if (playList_index > 0) {
     playList_index -= 1;
   } else {
@@ -71,12 +72,12 @@ const backMusic = () => {
   musicOn();
 };
 
-const musicSlider = () => {
+function musicSlider() {
   let seekto = createAudio.duration * (music_Slider.value / 100);
   createAudio.currentTime = seekto;
 };
 
-const muteUnmute = () => {
+function muteUnmute() {
   if (createAudio.muted === true) {
     createAudio.muted = false;
     mute_unmute.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
@@ -86,15 +87,15 @@ const muteUnmute = () => {
   }
 };
 
-const unmute = () => {
+function unmute() {
   createAudio.volume = createAudio.value / 100;
 };
 
-const mute = () => {
+function mute() {
   createAudio.muted = createAudio.value / 0;
 };
 
-const musicSliderUpdate = () => {
+function musicSliderUpdate() {
   let sliderPosition = 0;
 
   if (!isNaN(createAudio.duration)) {
@@ -112,7 +113,7 @@ const musicSliderUpdate = () => {
   }
 };
 
-const volumeSlider = () => {
+function volumeSlider() {
   createAudio.volume = vol_slider.value / 100;
 };
 
@@ -120,58 +121,58 @@ loadPlayList(playList_index);
 
 // Ai generated Code
 
-const shuffleMusic = () => {
+function shuffleMusic() {
   playList_index = Math.floor(Math.random() * playList.length);
   loadPlayList(playList_index);
   musicOn();
 };
 
-const repeatMusic = () => {
+function repeatMusic() {
   loadPlayList(playList_index);
   musicOn();
 };
 
-const fastForwardMusic = () => {
+function fastForwardMusic() {
   createAudio.currentTime += 10;
 };
 
-const slowDownMusic = () => {
+function slowDownMusic() {
   createAudio.currentTime -= 10;
 };
 
-// Theme Change
+//! Theme Change
+{
+  function toggleTheme() {
+    if (toggle_theme.getAttribute("href") === "./style/darkTheme.css") {
+      toggle_theme.setAttribute("href", "./style/lightTheme.css");
+      localStorage.setItem("theme", "dark");
+      theme_style_btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+      console.log("dark");
+    } else {
+      toggle_theme.setAttribute("href", "./style/darkTheme.css");
+      localStorage.setItem("theme", "light");
+      theme_style_btn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+      console.log("light");
+    }
+  }
 
-const toggleTheme = () => {
-  if (toggle_theme.getAttribute("href") === "./style/darkTheme.css") {
+  const storeTheme = localStorage.getItem("theme");
+  if (storeTheme === "dark") {
     toggle_theme.setAttribute("href", "./style/lightTheme.css");
-    localStorage.setItem("theme", "dark");
     theme_style_btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-    console.log("dark");
   } else {
     toggle_theme.setAttribute("href", "./style/darkTheme.css");
-    localStorage.setItem("theme", "light");
     theme_style_btn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-    console.log("light");
   }
-};
 
-const storeTheme = localStorage.getItem("theme");
-if (storeTheme === "dark") {
-  toggle_theme.setAttribute("href", "./style/lightTheme.css");
-  theme_style_btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-} else {
-  toggle_theme.setAttribute("href", "./style/darkTheme.css");
-  theme_style_btn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+  theme_style_btn.addEventListener("click", toggleTheme);
 }
 
-theme_style_btn.addEventListener("click", toggleTheme);
-
-// Render all music
-
-const renderMusic = () => {
+//! Render all music
+(function () {
   const musicList = playList.map((e) => {
     return `
-      <section class="my-3 flex items-center p-2 rounded-full">
+      <section class="my-3 flex items-center p-2 rounded-full justify-between">
         <div>
           <img src="${e.audioImg}" class="w-[40px] rounded-full" />
         </div>
@@ -184,6 +185,4 @@ const renderMusic = () => {
 
   let musicListRender = musicList.join("");
   all_music.innerHTML = musicListRender;
-};
-
-renderMusic();
+})();
