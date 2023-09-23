@@ -43,31 +43,22 @@ let loadedMusic = document.createElement("audio");
 let musicCondition = false;
 // music index
 let musicIndex = 0;
-
-function musicHandler(i) {    
-    loadedMusic.src = playList[i].path;
-
-    // end music load here
-    loadedMusic.load()
-};
-
-// declare function
-musicHandler(musicIndex);
 ```
 
-## 🔺 Random music (always reload)
+## 🔺 Random music Load (always reload)
 
 - reloaded website end always deferent music.
 
 ```js
 function musicHandler() {
   let randomIndex = Math.floor(math.random() * playList.length);
-  loadedMusic.src = playList[randomIndex].path;
-  
-  musicTitle.innerHTML = playList[randomIndex].name;
+  loadedMusic.src = playList[randomIndex].path;  
 
   loadedMusic.load();
 }
+
+// declare function
+musicHandler(musicIndex);
 ```
 
 ## 🔺 Set music title
@@ -88,11 +79,12 @@ let musicTitle = document.getElementById("musicTitle");
 :- ***Add Condition inside `musicHandler`***
 
 ```js
-function musicHandler(i) {
-  LoadedMusic.src = playList[i].path;
+function musicHandler() {
+  let randomIndex = Math.floor(math.random() * playList.length);
+  loadedMusic.src = playList[randomIndex].path;  
 
   /* */
-  musicTitle.innerHTML = playList[i].name;
+  musicTitle.innerHTML = playList[randomIndex].name;
   /* */
   
   LoadedMusic.load();
@@ -218,9 +210,9 @@ function backwardMusic() {
 
 ```js
 function musicHandler(i) {
-  // console.log((LoadedMusic.src = playList[i].path));
-  LoadedMusic.src = playList[i].path;
-  musicTitle.textContent = playList[i].name;
+  let randomIndex = Math.floor(math.random() * playList.length);
+  loadedMusic.src = playList[randomIndex].path;
+  musicTitle.innerHTML = playList[randomIndex].name;
 
   LoadedMusic.load();
 
@@ -231,6 +223,9 @@ function musicHandler(i) {
 ```
 
 ## 🔺 Random Music play method
+
+- Click end random music play.
+- ⚠️ Do not use this method. use random music load logic
 
 **`index.html`**
 
@@ -247,6 +242,36 @@ function randomMusicPlay() {
   MusicIndex = Math.floor(Math.random() * playList.length);
   musicHandler(MusicIndex);
   playMusic();
+}
+```
+
+## 🔺 Loop repeat song method
+
+**`index.html`**
+
+```html
+<button id="repeatMusic" onclick="repeatMusicBtn()">
+    <i class="fa-solid fa-random"></i>
+</button>
+```
+
+**`script.js`**
+
+```js
+let repeatMusic = document.getElementById("repeatMusic");
+```
+
+```js
+function repeatMusicBtn() {
+  if (LoadedMusic.loop === false) {
+    LoadedMusic.loop = true;
+    repeatMusic.innerHTML = '<i class="fa-solid fa-repeat"></i>';    
+    console.log("repeat");
+  } else {
+    LoadedMusic.loop = false;
+    repeatMusic.innerHTML = '<i class="fa-solid fa-random"></i>';
+    console.log("no repeat");
+  }
 }
 ```
 
@@ -351,11 +376,11 @@ function MusicCountdown() {
 
 ```js
 function musicHandler() {
-  // console.log((LoadedMusic.src = playList[i].path));
-  LoadedMusic.src = playList[i].path;
-  musicTitle.textContent = playList[i].name;
+  let randomIndex = Math.floor(math.random() * playList.length);
+  loadedMusic.src = playList[randomIndex].path;
+  musicTitle.innerHTML = playList[randomIndex].name;
 
-  LoadedMusic.load();
+  LoadedMusic.load();    
   LoadedMusic.addEventListener("ended", forwardBtn);
   
   /* */
