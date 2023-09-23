@@ -55,6 +55,21 @@ function musicHandler(i) {
 musicHandler(musicIndex);
 ```
 
+## 🔺 Random music (always reload)
+
+- reloaded website end always deferent music.
+
+```js
+function musicHandler() {
+  let randomIndex = Math.floor(math.random() * playList.length);
+  loadedMusic.src = playList[randomIndex].path;
+  
+  musicTitle.innerHTML = playList[randomIndex].name;
+
+  loadedMusic.load();
+}
+```
+
 ## 🔺 Set music title
 
 **`index.html`**
@@ -173,6 +188,32 @@ function backwardBtn() {
 };
 ```
 
+## 🔺 Next End Prevue method
+
+**`index.html`**
+
+```html
+<button onclick="forwardMusic()">
+    <i class="fa-solid fa-forward"></i>
+</button>
+
+<button onclick="backwardMusic()">
+  <i class="fa-solid fa-backward"></i>
+</button>
+```
+
+**`script.js`**
+
+```js
+function forwardMusic() {
+  LoadedMusic.currentTime += 10;
+}
+
+function backwardMusic() {
+  LoadedMusic.currentTime -= 10;
+}
+```
+
 ## 🔺 Auto Change Music Method
 
 ```js
@@ -186,6 +227,26 @@ function musicHandler(i) {
   /* */
   LoadedMusic.addEventListener("ended", forwardBtn);  
   /* */
+}
+```
+
+## 🔺 Random Music play method
+
+**`index.html`**
+
+```html
+<button onclick="randomMusicPlay()">
+    <i class="fa-solid fa-random"></i>
+</button>
+```
+
+**`script.js`**
+
+```js
+function randomMusicPlay() {
+  MusicIndex = Math.floor(Math.random() * playList.length);
+  musicHandler(MusicIndex);
+  playMusic();
 }
 ```
 
