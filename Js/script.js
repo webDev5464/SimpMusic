@@ -1,4 +1,4 @@
-//! Get Id's 
+//! Get Id's
 let back = document.getElementById("back");
 let next = document.getElementById("next");
 let playPause_btn = document.getElementById("playPause");
@@ -15,17 +15,22 @@ let toggle_theme = document.getElementById("toggle-theme");
 let theme_style_btn = document.getElementById("theme-style");
 let all_music = document.getElementById("allMusic");
 
-//! Global Variable 
+//! Global Variable
 let playPushOnOff = false;
 let playList_index = 0;
 let updateMusic;
 let createAudio = document.createElement("audio");
 
-const loadPlayList = (playList_index) => {
-  createAudio.src = playList[playList_index].path;
-  musicTitle.textContent = playList[playList_index].name;
-  singerName.textContent = playList[playList_index].singer;
-  audio_image.src = playList[playList_index].audioImg;
+const loadPlayList = () => {
+  // createAudio.src = playList[playList_index].path;
+  // musicTitle.textContent = playList[playList_index].name;
+  // singerName.textContent = playList[playList_index].singer;
+  // audio_image.src = playList[playList_index].audioImg;
+  let randomIndex = Math.floor(Math.random() * playList.length);
+  createAudio.src = playList[randomIndex].path;
+  musicTitle.textContent = playList[randomIndex].name;
+  singerName.textContent = playList[randomIndex].singer;
+  audio_image.src = playList[randomIndex].audioImg;
 
   createAudio.load();
 
@@ -36,19 +41,19 @@ const loadPlayList = (playList_index) => {
 
 function playPush() {
   !playPushOnOff ? musicOn() : musicOff();
-};
+}
 
 function musicOn() {
   playPushOnOff = true;
   createAudio.play();
   playPause_btn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-};
+}
 
 function musicOff() {
   playPushOnOff = false;
   createAudio.pause();
   playPause_btn.innerHTML = '<i class="fa-solid fa-play"></i>';
-};
+}
 
 function nextMusic() {
   if (playList_index < playList.length - 1) {
@@ -59,7 +64,7 @@ function nextMusic() {
 
   loadPlayList(playList_index);
   musicOn();
-};
+}
 
 function backMusic() {
   if (playList_index > 0) {
@@ -70,12 +75,12 @@ function backMusic() {
 
   loadPlayList(playList_index);
   musicOn();
-};
+}
 
 function musicSlider() {
   let seekto = createAudio.duration * (music_Slider.value / 100);
   createAudio.currentTime = seekto;
-};
+}
 
 function muteUnmute() {
   if (createAudio.muted === true) {
@@ -85,15 +90,15 @@ function muteUnmute() {
     createAudio.muted = true;
     mute_unmute.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
   }
-};
+}
 
 function unmute() {
   createAudio.volume = createAudio.value / 100;
-};
+}
 
 function mute() {
   createAudio.muted = createAudio.value / 0;
-};
+}
 
 function musicSliderUpdate() {
   let sliderPosition = 0;
@@ -111,11 +116,11 @@ function musicSliderUpdate() {
     currTime.textContent = music_minutes + ":" + music_sec;
     totalDuration.textContent = total_minutes + ":" + total_seconds;
   }
-};
+}
 
 function volumeSlider() {
   createAudio.volume = vol_slider.value / 100;
-};
+}
 
 loadPlayList(playList_index);
 
@@ -125,20 +130,20 @@ function shuffleMusic() {
   playList_index = Math.floor(Math.random() * playList.length);
   loadPlayList(playList_index);
   musicOn();
-};
+}
 
 function repeatMusic() {
   loadPlayList(playList_index);
   musicOn();
-};
+}
 
 function fastForwardMusic() {
   createAudio.currentTime += 10;
-};
+}
 
 function slowDownMusic() {
   createAudio.currentTime -= 10;
-};
+}
 
 //! Theme Change
 {
