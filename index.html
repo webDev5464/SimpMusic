@@ -61,9 +61,7 @@
     </aside>
 
     <!--! tab music Information  -->
-    <section class="bg-blue-900 w-[500px] hidden tab:block absolute h-[340px] left-0 top-[300px]">
-
-    </section>
+    <section class="bg-blue-900 w-[500px] hidden tab:block absolute h-[340px] left-0 top-[300px]"></section>
 
     <!--! All Music Render -->
     <section class="w-full ml-20">
@@ -72,7 +70,7 @@
       <header class="bg-red-900 h-[50px] w-screen fixed top-0"></header>
 
       <!--! Hare is render all music's -->
-      <main class="">
+      <main>
         <div class="pr-1 w-full overflow-auto h-[620px] mt-[55px] mb-[110px]">
           <section id="allMusic" class=""></section>
         </div>
@@ -85,7 +83,7 @@
     <div class="flex justify-between items-center">
 
       <!--! Music Information -->
-      <section class="flex items-center midTab:hidden w-[400px]">
+      <section class="flex items-center midTab:hidden w-1/4">
         <div class="mt-1 mr-3 border tab:border-none tab:hidden">
           <img alt="album-Image" class="w-[60px]" id="audioImage">
         </div>
@@ -147,15 +145,12 @@
           </div>
         </div>
 
-        <div class="w-[90px] mobM:w-fit flex mobM:flex-col justify-between m-auto my-1">
-          <button class="mobM:py-1" id="mute_Unmute" onclick="muteUnmute()">
+        <div class="w-fit mobM:w-fit flex mobM:flex-col justify-between m-auto my-1">
+          <button class="mobM:py-1 mr-2" id="mute_Unmute" onclick="muteUnmute()">
             <i class="fa-solid fa-volume-high"></i>
           </button>
-          <button class="mobM:py-1" id="shuffle" onclick="shuffleMusic()">
+          <button class="mobM:py-1 ml-2" id="repeatMusic" onclick="repeatMusicBtn()">
             <i class="fa-solid fa-random"></i>
-          </button>
-          <button class="mobM:py-1" id="repeat" onclick="repeatMusic()">
-            <i class="fa-solid fa-repeat"></i>
           </button>
         </div>
       </section>

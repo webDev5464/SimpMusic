@@ -14,6 +14,7 @@ let singer_name = document.getElementById("singerName");
 let toggle_theme = document.getElementById("toggle-theme");
 let theme_style_btn = document.getElementById("theme-style");
 let all_music = document.getElementById("allMusic");
+let repeatMusic = document.getElementById("repeatMusic");
 
 //! Global Variable
 let playPushOnOff = false;
@@ -78,8 +79,8 @@ function backMusic() {
 }
 
 function musicSlider() {
-  let seekto = createAudio.duration * (music_Slider.value / 100);
-  createAudio.currentTime = seekto;
+  let seekTo = createAudio.duration * (music_Slider.value / 100);
+  createAudio.currentTime = seekTo;
 }
 
 function muteUnmute() {
@@ -132,9 +133,14 @@ function shuffleMusic() {
   musicOn();
 }
 
-function repeatMusic() {
-  loadPlayList(playList_index);
-  musicOn();
+function repeatMusicBtn() {
+  if (createAudio.loop === false) {
+    createAudio.loop = true;
+    repeatMusic.innerHTML = '<i class="fa-solid fa-repeat"></i>';
+  } else {
+    createAudio.loop = false;
+    repeatMusic.innerHTML = '<i class="fa-solid fa-random"></i>';
+  }
 }
 
 function fastForwardMusic() {
@@ -145,6 +151,68 @@ function slowDownMusic() {
   createAudio.currentTime -= 10;
 }
 
+//! Render all music
+(function () {
+  const musicList = playList.map((e, index) => {
+    return `
+      <section class="renderMusicDetail flex items-center justify-between rounded-full p-2 my-3" id="musicLoop">
+        <div class="flex justify-between items-center w-1/2">
+          <div>
+            <img src="${e.audioImg}" class="w-[40px] rounded-full" />
+          </div>
+
+          <div class="text-center w-fit m-auto">
+            <p class="font-bold">${e.name}</p>
+            <p>${e.singer}</p>            
+          </div>
+        </div>
+
+        <div class="flex mr-4">      
+          <div class="mr-5">
+            00:00
+          </div>
+          <!-- Include a data-id attribute with a unique identifier (e.g., index) -->
+          <button class="play-button" data-id="${index}" data-music-id="${e.path}">
+            <i id="renderIcon" class="fa-solid fa-play"></i>
+          </button>          
+        </div>
+      </section>
+    `;
+  });
+
+  // class="fa-solid fa-play"
+
+  let musicListRender = musicList.join("");
+  all_music.innerHTML = musicListRender;
+
+  const playButtons = document.querySelectorAll(".play-button");
+  let renderIcon = document.getElementById("renderIcon")
+
+  playButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      let musicId = event.currentTarget.getAttribute('data-music-id')
+      let musicToPlay = playList.find((e) => e.id === parseInt(musicId))
+
+      if (!musicToPlay) {
+        if (!createAudio.paused) {
+          createAudio.musicOff
+          musicOff()
+          console.log("current Audio Push");
+          renderIcon.className = "fa-solid fa-play"
+        } else {
+          createAudio.musicOn
+          createAudio.src = musicId
+          musicOn()
+          console.log("Selected Audio play");
+          renderIcon.className = "fa-solid fa-play"
+        }
+      }
+
+    });
+  });
+
+})();
+
 //! Theme Change
 {
   function toggleTheme() {
@@ -152,12 +220,12 @@ function slowDownMusic() {
       toggle_theme.setAttribute("href", "./style/lightTheme.css");
       localStorage.setItem("theme", "dark");
       theme_style_btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-      console.log("dark");
+      // console.log("dark");
     } else {
       toggle_theme.setAttribute("href", "./style/darkTheme.css");
       localStorage.setItem("theme", "light");
       theme_style_btn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-      console.log("light");
+      // console.log("light");
     }
   }
 
@@ -172,22 +240,3 @@ function slowDownMusic() {
 
   theme_style_btn.addEventListener("click", toggleTheme);
 }
-
-//! Render all music
-(function () {
-  const musicList = playList.map((e) => {
-    return `
-      <section class="my-3 flex items-center p-2 rounded-full justify-between">
-        <div>
-          <img src="${e.audioImg}" class="w-[40px] rounded-full" />
-        </div>
-        <div>
-          <p>${e.name}</p>
-        </div>
-      </section>
-    `;
-  });
-
-  let musicListRender = musicList.join("");
-  all_music.innerHTML = musicListRender;
-})();

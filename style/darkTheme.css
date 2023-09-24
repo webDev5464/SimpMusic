@@ -1,15 +1,15 @@
 body {
-    background-color: var(--bodyBgDark);
-    color: var(--textDark);
+  background-color: var(--bodyBgDark);
+  color: var(--textDark);
 }
 
 aside,
-#allMusic>section {
-    background-color: var(--themeDark);
+.renderMusicDetail {
+  background-color: var(--themeDark);
 }
 
 footer {
-    background-color: var(--penalDark);
+  background-color: var(--penalDark);
 }
 
 aside>section>div:nth-child(2),
@@ -17,8 +17,9 @@ aside>section>div:nth-child(3),
 aside>section>div:nth-child(4),
 footer>div>section:nth-child(2)>div:nth-child(1)>button,
 footer>div>section:nth-child(3)>div:nth-child(2)>button,
-#singerName {
-    color: var(--iconDark);
+#singerName,
+.renderMusicDetail>div:nth-child(1)>div:nth-child(2)>p:nth-child(2) {
+  color: var(--iconDark);
 }
 
 aside>section>div:nth-child(2):hover,
@@ -26,21 +27,21 @@ aside>section>div:nth-child(3):hover,
 aside>section>div:nth-child(4):hover,
 footer>div>section:nth-child(2)>div:first-child>button:hover,
 footer>div>section:nth-child(3)>div:nth-child(2)>button:hover {
-    color: var(--textDark);
+  color: var(--textDark);
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 4px;
-    cursor: pointer;
-    animate: 0.2s;
-    box-shadow: 0px 0px 0px #000000;
-    background: rgb(0, 0, 0);
-    border-radius: 6px;
-    border: 0px solid #000000;
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: rgb(0, 0, 0);
+  border-radius: 6px;
+  border: 0px solid #000000;
 }
 
 *::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background-color: var(--bodyBgLight);
+  border-radius: 2px;
+  background-color: var(--bodyBgLight);
 }
