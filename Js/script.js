@@ -23,10 +23,6 @@ let updateMusic;
 let createAudio = document.createElement("audio");
 
 const loadPlayList = () => {
-  // createAudio.src = playList[playList_index].path;
-  // musicTitle.textContent = playList[playList_index].name;
-  // singerName.textContent = playList[playList_index].singer;
-  // audio_image.src = playList[playList_index].audioImg;
   let randomIndex = Math.floor(Math.random() * playList.length);
   createAudio.src = playList[randomIndex].path;
   musicTitle.textContent = playList[randomIndex].name;
@@ -98,7 +94,8 @@ function unmute() {
 }
 
 function mute() {
-  createAudio.muted = createAudio.value / 0;
+  // createAudio.muted = createAudio.value / 0;
+  createAudio.volume = 0;
 }
 
 function musicSliderUpdate() {
@@ -168,49 +165,43 @@ function slowDownMusic() {
         </div>
 
         <div class="flex mr-4">      
-          <div class="mr-5">
+          <div class="musicDuration mr-5">
             00:00
           </div>
-          <!-- Include a data-id attribute with a unique identifier (e.g., index) -->
           <button class="play-button" data-id="${index}" data-music-id="${e.path}">
             <i id="renderIcon" class="fa-solid fa-play"></i>
-          </button>          
+          </button>
         </div>
       </section>
     `;
   });
 
-  // class="fa-solid fa-play"
-
   let musicListRender = musicList.join("");
   all_music.innerHTML = musicListRender;
 
   const playButtons = document.querySelectorAll(".play-button");
-  let renderIcon = document.getElementById("renderIcon")
 
   playButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
-      let musicId = event.currentTarget.getAttribute('data-music-id')
-      let musicToPlay = playList.find((e) => e.id === parseInt(musicId))
+      let icon = button.children[0];
+      let musicId = event.currentTarget.getAttribute("data-music-id");
+      let musicToPlay = playList.find((e) => e.id === parseInt(musicId));
 
       if (!musicToPlay) {
         if (!createAudio.paused) {
-          createAudio.musicOff
-          musicOff()
-          console.log("current Audio Push");
-          renderIcon.className = "fa-solid fa-play"
+          createAudio.musicOff;
+          createAudio.src = musicId;
+          musicOff();
+          icon.className = "fa-solid fa-play";
         } else {
-          createAudio.musicOn
-          createAudio.src = musicId
-          musicOn()
-          console.log("Selected Audio play");
-          renderIcon.className = "fa-solid fa-play"
+          createAudio.musicOn;
+          createAudio.src = musicId;
+          musicOn();
+          icon.className = "fa-solid fa-pause";
         }
       }
-
     });
   });
-
 })();
 
 //! Theme Change
